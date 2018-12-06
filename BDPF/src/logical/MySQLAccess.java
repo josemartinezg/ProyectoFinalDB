@@ -17,23 +17,17 @@ public class MySQLAccess {
 
     public void readDataBase() throws Exception {
         try {
-            // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.jdbc.Driver");
-            // Setup the connection with the DB
-            connect = DriverManager.getConnection("jdbc:mysql://localhost/trabajofinaldb", "chema", "Nom@sde16");
 
-            // Statements allow to issue SQL queries to the database
+            connect = DriverManager.getConnection("jdbc:mysql://localhost/trabajofinaldb", "chema", "Nom@sde16");
             statement = connect.createStatement();
-            // Result set get the result of the SQL query
+
             resultSet = statement
                     .executeQuery("select * from trabajofinaldb.persona");
             writeResultSet(resultSet);
-
-            // PreparedStatements can use variables and are more efficient
             preparedStatement = connect
-                    .prepareStatement("insert into trabajofinaldb.persona values (?, ?, ?, ?, ? , ?, ?, ?, ?)");
-            // "myuser, webpage, datum, summary, COMMENTS from feedback.comments");
-            // Parameters start with 1
+            		.prepareStatement("insert into trabajofinaldb.persona values (?, ?, ?, ?, ? , ?, ?, ?, ?)");
+
             preparedStatement.setString(1, "PER00006");
             preparedStatement.setString(2, "Jose");
             preparedStatement.setString(3, "Manuel");

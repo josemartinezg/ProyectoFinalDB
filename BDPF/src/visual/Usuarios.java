@@ -76,8 +76,15 @@ public class Usuarios extends JFrame {
 		JButton btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UsuarioBorrar usuarioborrar = new UsuarioBorrar ();
-				usuarioborrar.setVisible(true);
+				UsuarioBorrar usuarioborrar;
+				try {
+					usuarioborrar = new UsuarioBorrar ();
+					usuarioborrar.setVisible(true);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnBorrar.setBounds(262, 29, 89, 23);
