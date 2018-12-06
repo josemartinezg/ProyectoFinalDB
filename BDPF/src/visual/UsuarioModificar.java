@@ -258,30 +258,33 @@ public class UsuarioModificar extends JFrame {
         	Class.forName("com.mysql.jdbc.Driver");
             connect = DriverManager.getConnection("jdbc:mysql://localhost/trabajofinaldb", "chema", "Nom@sde16");
             statement = connect.createStatement();
-			resultSet = statement.executeQuery("SELECT Contrasenna from trabajofinaldb.usuario where ID_Usuario = USR0006;");
-			if (resultSet.getString("Contrasenna") == Contrasenna) {
+			resultSet = statement.executeQuery("SELECT Contrasenna from trabajofinaldb.usuario where ID_Usuario =" +"'" + ID_Usuario +"';");
+	     if(resultSet.next()) {
+			if (resultSet.getString("Contrasenna").equals(Contrasenna)) {
+
 				if (P_Nombre != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET P_Nombre = " + P_Nombre + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET P_Nombre = " + "'" + P_Nombre + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}
 				if (S_Nombre != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET S_Nombre = " + S_Nombre + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET S_Nombre = " + "'" + S_Nombre + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}
 				if (P_Apellido != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET P_Apellido = " + P_Apellido + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET P_Apellido = " + "'" + P_Apellido + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}
 				if (S_Apellido != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET S_Apellido = " + S_Apellido + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET S_Apellido = " + "'" + S_Apellido + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}
 				if (Pais != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET Pais = " + Pais + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET Pais = " + "'" + Pais + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}
 				if (Anno != null && Dia != null && Mes != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET Fecha_Nacimiento = " + Fecha_Nacimiento + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET Fecha_Nacimiento = " + "'" +Fecha_Nacimiento + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}		
 				if (Genero != null) {
-					statement.executeUpdate("UPDATE trabajofinaldb SET Genero = " + Genero + " WHERE ID_Usuario = " + ID_Usuario);
+					statement.executeUpdate("UPDATE trabajofinaldb.usuario SET Genero = " + "'" + Genero + "'" + " where ID_Usuario =" + "'" + ID_Usuario + "';");
 				}
 			}
+	     }
 			preparedStatement.executeUpdate();
             //writeResultSet(resultSet);
 
