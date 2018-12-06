@@ -53,16 +53,8 @@ public class UsuarioBorrar extends JFrame {
 	 * Create the frame.
 	 * @throws Exception 
 	 */
-	public UsuarioBorrar() throws Exception {
-		try {
-		Class.forName("com.mysql.jdbc.Driver");
-        connect = DriverManager.getConnection("jdbc:mysql://localhost/trabajofinaldb", "chema", "Nom@sde16");
-        statement = connect.createStatement();
-		} catch (Exception e) {
-            throw e;
-        } finally {
-            close();
-        }
+	public UsuarioBorrar(){
+
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 155);
@@ -90,15 +82,14 @@ public class UsuarioBorrar extends JFrame {
 					int borrar = JOptionPane.showConfirmDialog(null, "¿Desea eliminar este elemento?" + ID_Usuario, "Información", JOptionPane.YES_NO_OPTION);
 					if (borrar == JOptionPane.YES_OPTION) {
 						try {
-							preparedStatement = connect.prepareStatement("DELETE from trabajofinadb.usuario where ID_Usuario = ? ;");
-							preparedStatement.setString(1, ID_Usuario);
-							resultSet = preparedStatement.executeQuery();
-							//writeResultSet(resultSet);
-						} catch (SQLException e1) {
+							readDataBase(ID_Usuario);
+						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-					}
+						
+						}
+					
 				}
 			}
 		});
@@ -114,7 +105,42 @@ public class UsuarioBorrar extends JFrame {
 		btnVolver.setBounds(264, 82, 89, 23);
 		contentPane.add(btnVolver);
 	}
-	
+
+
+	    public void readDataBase(String ID_Usuario) throws Exception {
+	        try {
+	            /*int borrar = JOptionPane.showConfirmDialog(null, "¿Desea eliminar este elemento?" + ID_Usuario, "Información", JOptionPane.YES_NO_OPTION);
+					if (borrar == JOptionPane.YES_OPTION) {
+						try {
+							preparedStatement = connect.prepareStatement("DELETE from trabajofinadb.usuario where ID_Usuario = ? ;");
+							preparedStatement.setString(1, ID_Usuario);
+							resultSet = preparedStatement.executeQuery();
+							//writeResultSet(resultSet);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}*/	        	
+	            Class.forName("com.mysql.jdbc.Driver");
+	            connect = DriverManager.getConnection("jdbc:mysql://localhost/trabajofinaldb", "chema", "Nom@sde16");
+	            statement = connect.createStatement();
+	            preparedStatement = connect.prepareStatement("DELETE from trabajofinaldb.usuario where ID_Usuario = ? ;");
+				preparedStatement.setString(1, ID_Usuario);
+				preparedStatement.executeUpdate();
+	            //writeResultSet(resultSet);
+
+	            resultSet = statement
+	            .executeQuery("select * from trabajofinaldb.persona");
+	           // writeMetaData(resultSet);
+
+	        } catch (Exception e) {
+	            throw e;
+	        } finally {
+	            close();
+	        }
+
+	    }
+
     private void close() {
         try {
             if (resultSet != null) {
