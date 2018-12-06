@@ -85,7 +85,7 @@ public class UsuarioModificar extends JFrame {
 		label_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label_4.setBounds(10, 97, 72, 14);
 		contentPane.add(label_4);
-		
+		//
 		textField_2 = new JTextField();
 		textField_2.setEditable(false);
 		textField_2.setEnabled(false);
