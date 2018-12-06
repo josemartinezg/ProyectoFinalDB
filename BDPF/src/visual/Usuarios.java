@@ -107,8 +107,15 @@ public class Usuarios extends JFrame {
 		lblArtistas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnColeccion = new JButton("Coleccion");
-		btnColeccion.setBounds(139, 45, 128, 23);
+		btnColeccion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				ArtistasColeccion artistascoleccion = new ArtistasColeccion();
+				artistascoleccion.setVisible(true);
+				
+			}
+		});
+		btnColeccion.setBounds(121, 43, 128, 23);
 		panel_1.add(btnColeccion);
 	}
-
 }
