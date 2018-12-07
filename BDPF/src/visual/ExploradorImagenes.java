@@ -39,13 +39,13 @@ public class ExploradorImagenes extends JFrame {
 		//	
 		}
 	
-		if (result == JFileChooser.APPROVE_OPTION) {
+		/*if (result == JFileChooser.APPROVE_OPTION) {
 			file = fileChooser.getSelectedFile();
 			dispose();
 		}else if (result == JFileChooser.CANCEL_OPTION) {
 			System.out.println("Cancelar se seleccionó");
 		}
-		contentPanel.add(fileChooser, BorderLayout.CENTER);
+		contentPanel.add(fileChooser, BorderLayout.CENTER);*/
 		
 	}
 

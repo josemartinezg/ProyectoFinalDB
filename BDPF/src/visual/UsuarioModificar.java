@@ -73,6 +73,11 @@ public class UsuarioModificar extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton button = new JButton("Volver");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		button.setBounds(247, 373, 107, 35);
 		contentPane.add(button);
 		
